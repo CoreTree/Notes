@@ -180,6 +180,73 @@ def containsDuplicate(a:list[int], k:int) -> bool:
     return False
 ```
 
+## Heaps
+MinHeap - pops the minimum value in the heap
+```python
+#Uses O(n) space
+import heapq
+
+a = [1, 2, 3, 4, 5]
+heapq.heapify(a)
+heapq.heappop(a) #This should run the lowest value for the heapq
+#To do a MaxHeap, you'll want;
+heapq.heapify_max(a)
+heapq.heappop(a) #This should return 5 in this case)
+#a would now not be ordered (as entered), but should return an iterable in level-order(?) output
+```
+
+## HeapSort
+```python
+def heapify(arr, n, i):
+    largest = i
+    left = 2 * i + 1 #left child index
+    right = 2 * i + 2 #right child index
+    if left < n and arr[left] > arr[largest]:
+        largest = left
+    
+    if right < n and arr[right] > arr[largest]:
+        largest = right
+    
+    if largest != i:
+        arr[i], arr[largest] = arr[largest], arr[i] #swap
+        heapfiy(arr, n, largest)
+    
+def heap_sort(arr):
+    n = len(arr)
+    #Build a max heap
+    for i in range(n // 2 - 1, -1, -1):
+        heapify(arr, n, i)
+    
+    #One by one extract elements from theap
+    for i in range(n - 1, 0, -2):
+        arr[i], arr[0] = arr[0], arr[i]
+        heapify(arr, i, 0)
+
+alist = [12, 11, 13, 5, 6]
+print('Input list:', alist)
+
+heap_sort(alist)
+print('Sorted list:', alist)
+```
+
+
+## LinkedList
+```python
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+```
+
+## DoublelyLinkedlist
+```python
+class ListNode:
+    def __init__(self, val=0, next=None, previous=None):
+        self.val = val
+        self.next = next
+        self.previous
+```
+
 # Patterns
 ## Prefix Sum Pattern
 - Running sums...
@@ -203,3 +270,6 @@ def is_palindrome(a:str) -> bool:
             return False
     return True
 ```
+
+## Dynamic Programming
+- Usually a combination of the above Patterns + Structures

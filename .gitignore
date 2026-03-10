@@ -4,3 +4,5 @@ interviews/
 .vscode/
 ProjectIdeas.md
 .idea/
+Ignored/
+.venv/

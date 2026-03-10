@@ -33,7 +33,7 @@
     - Header Linked List
         - Head -> A (May contain multiple data fields, and next) -> B (May contain multiple data fields, and next) -> C (May contain multiple data fields, and next) -> ...
         ![](https://media.geeksforgeeks.org/wp-content/uploads/20191110220317/Polynomial.jpg)
-## Trees
+## Trees (B-Tree)
 - Abstract data type that represent a hirearchial tree structure with a set of connected nodes, nodes can have many child nodes (depending on the type of tree)
 - Some Applications
     - File System structure
@@ -46,7 +46,7 @@
     - DOM (Document Object Models) of XML / HTML documents
     - Search Trees (Most common for interviews)
 
-## Tries
+## Tries (B+Tree)
 - Best used for dictionaries, autocorrect, or predictive text
 - basically a Tree with a set number of child nodes (n)
 ![](https://upload.wikimedia.org/wikipedia/commons/c/c0/Trie_representation.png)

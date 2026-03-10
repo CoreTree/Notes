@@ -19,6 +19,35 @@ Mesu was an original asset server that hosted XML files before REST requests wer
 
 Example (source: [applewiki](https://theapplewiki.com/wiki/MobileAsset#Mesu)): [`https://mesu.apple.com/assets/macos/com_apple_MobileAsset_TimeZoneUpdates/com_apple_MobileAsset_TimeZoneUpdate.xml`](https://mesu.apple.com/assets/macos/com_apple_MobileAsset_TimeZoneUpdates/com_apple_MobileAsset_TimeZoneUpdate.xml)
 
+## GDMF (Pallas)
+Pallas is the updated server with two different clients that manage access to this server. Trial (publishing) and mobileasset (client). Here's an example request to Pallas;
+
+```python
+import base64
+import requests
+import json
+
+data = {
+    "AssetAudience": "02d8e57e-dd1c-4090-aa50-b4ed2aef0062", #This is no longer valid for macOS 26.0+
+    "ClientVersion": 2,
+    "AssetType": "com.apple.siri.understanding",
+    "CertIssuanceDay": "2023-12-10", #This has since been updated to some time in 2024-12 or something
+    "TrainName": "Crystal" #This isn't a current version, it's macOS 15.0
+}
+headers = {
+    "Content-Type": "application/json",
+    "Host": "gdmf.apple.com",
+    "Content-Length": str(len(json.dumps(data)))
+}
+url = "https://gdmf.apple.com/v2/assets"
+req = requests.post(url, headers=headers, json=data, verify=False)
+if req.status_code == 200:
+    message = req.text.split('.')[1] + '=='
+    print(base64.b64decode(message))
+else:
+    print(req.text)
+```
+
 ## Some Links/References
-- [Pallas.py](https://github.com/riigess/pallas.py), an exploritory repo that dives deeper into making requests to Pallas
+- I have a personal exploratory repo. If available, it would be at [pallas.py](https://github.com/riigess/pallas.py) otherwise, this doc serves as a reference for that information
 - [The Apple Wiki page on MobileAsset](https://theapplewiki.com/wiki/MobileAsset)

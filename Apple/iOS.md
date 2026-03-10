@@ -7,5 +7,5 @@
 - Three DMG files make up the IPSW file structure, with an Info.plist file to provide a way to confirm upgrades/downgrades
 
 ## Some Links/References
-- [iBoot on TAW](https://theapplewiki.com/wiki/IBoot)
+- [iBoot on TheAppleWiki](https://theapplewiki.com/wiki/IBoot)
 - [AirPlay](./AirPlay-mDNS.md)

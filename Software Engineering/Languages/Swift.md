@@ -24,6 +24,20 @@ if let value = numberFormatter.number(from: "-121.03777") {
 }
 ```
 
+### Nil, optionals, and when to use guard statements
+```swift
+var someVar:Int? = nil
+
+func inputExists(_ input:Int? = nil) -> Bool {
+    guard let inputExists = input else {
+        return false
+    }
+    return true
+}
+
+print(inputExists(someVar))
+```
+
 ## Core Data
 ### Generating Core Data class code. - [REF](https://developer.apple.com/documentation/coredata/modeling_data/generating_code)
 Don't forget to change the persistence store name... - [REF](https://developer.apple.com/forums/thread/658033)
@@ -276,6 +290,7 @@ struct ContentView: View {
             var req = URLRequest(url: url)
             req.addValue("[token]", forHTTPHeaderField: "X-TBA-Auth-Key")
 
+            //TODO: Redo this. It's horrible to follow, and not super great on best practices..
             let task = URLSession.shared.dataTask(with: req) { data, response, error in
                 if let d = data {
                     if let decodedResponse = try? JSONDecoder().decode([Result].self, from: d) {
